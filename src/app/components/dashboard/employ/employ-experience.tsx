@@ -1,75 +1,116 @@
 import NiceSelect from "@/ui/nice-select";
 import React from "react";
 
-const EmployExperience = () => {
-  const handleExperience = (item: { value: string; label: string }) => {};
-  const handleLocation = (item: { value: string; label: string }) => {};
-  const handleIndustry = (item: { value: string; label: string }) => {};
-  const handleEnglishFluency = (item: { value: string; label: string }) => {};
+const EmployExperience = ({
+  experience,
+  setExperience,
+  education,
+  setEducation,
+  Expertise,
+  setExpertise,
+}: any) => {
+  const handleExperience = (item: { value: string; label: string }) => {
+    setExperience({ ...experience, label: item.value });
+  };
+  const handleEducation = (item: { value: string; label: string }) => {
+    setEducation({ ...education, label: item.value });
+  };
+  const handleExpertise = (item: { value: string; label: string }) => {
+    setExpertise({ ...Expertise, label: item.value });
+  };
+
   return (
-    <div className="row align-items-end">
-      <div className="col-md-6">
-        <div className="dash-input-wrapper mb-30">
-          <label htmlFor="">Experience*</label>
-          <NiceSelect
-            options={[
-              { value: "Intermediate", label: "Intermediate" },
-              { value: "No-Experience", label: "No-Experience" },
-              { value: "Expert", label: "Expert" },
-            ]}
-            defaultCurrent={0}
-            onChange={(item) => handleExperience(item)}
-            name="Experience"
-          />
+    <div className="accordion-item">
+      
+        <div className="row mt-30">
+          <div className="col-lg-2">
+            <div className="dash-input-wrapper md-mb-10">
+              <label htmlFor="">Expertise*</label>
+            </div>
+          </div>
+          <div className="col-lg-10">
+            <div className="dash-input-wrapper ">
+              <NiceSelect
+                options={[
+                  { value: "Freshers", label: "Freshers" },
+                  { value: "Intermediate", label: "Intermediate" },
+                  { value: "Experienced", label: "Experienced" },
+                  { value: "Expert", label: "Expert" },
+                  { value: "Any Expertise", label: "Any Expertise" },
+                ]}
+                defaultCurrent={0}
+                onChange={(item) => handleExpertise(item)}
+                name="Job Type"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="row mt-30">
+          <div className="col-lg-2">
+            <div className="dash-input-wrapper mb-30 md-mb-10">
+              <label htmlFor="">Experience*</label>
+            </div>
+          </div>
+          <div className="col-lg-10">
+            <div className="dash-input-wrapper mb-30">
+              <NiceSelect
+                options={[
+                  { value: "Any", label: "Any" },
+                  {
+                    value: "Less than 1 year",
+                    label: "Less than 1 year",
+                  },
+                  { value: "0 - 1 year", label: "0  -1 year" },
+                  { value: "1 - 2 year", label: "1 - 2 year" },
+                  { value: "2 - 3 year", label: "2 - 3 year" },
+                  { value: "3 - 4 year", label: "3 - 4 year" },
+                  { value: "4 - 5 year", label: "4 - 5 year" },
+                ]}
+                defaultCurrent={0}
+                onChange={(item) => handleExperience(item)}
+                name="Experience"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-lg-2">
+            <div className="dash-input-wrapper mb-30 md-mb-10">
+              <label htmlFor="">Education*</label>
+            </div>
+          </div>
+          <div className="col-lg-10">
+            <div className="dash-input-wrapper mb-30">
+              <NiceSelect
+                options={[
+                  { value: "Any", label: "Any" },
+                  { value: "10th", label: "10th" },
+                  { value: "12th", label: "12th" },
+                  { value: " Any Graduate", label: "Any Graduate" },
+                  { value: "Post-Graduate", label: "Post-Graduate" },
+                  { value: "PhD", label: "PhD" },
+                  { value: "MBA", label: "MBA" },
+                  { value: "MCA", label: "MCA" },
+                  { value: "BCA", label: "BCA" },
+                  { value: "Diploma", label: "Diploma" },
+                  { value: "Bsc", label: "Bsc" },
+                  { value: "Msc", label: "Msc" },
+                  { value: "BBA", label: "BBA" },
+                  { value: "B.Com", label: "B.Com" },
+                  { value: "M.Com", label: "M.Com" },
+                  { value: "BA", label: "BA" },
+                ]}
+                defaultCurrent={0}
+                onChange={(item) => handleEducation(item)}
+                name="Eudation"
+              />
+            </div>
+          </div>
         </div>
       </div>
-      <div className="col-md-6">
-        <div className="dash-input-wrapper mb-30">
-          <label htmlFor="">Location*</label>
-          <NiceSelect
-            options={[
-              { value: "Washington DC", label: "Washington DC" },
-              { value: "California, CA", label: "California, CA" },
-              { value: "New York", label: "New York" },
-              { value: "Miami", label: "Miami" },
-            ]}
-            defaultCurrent={0}
-            onChange={(item) => handleLocation(item)}
-            name="Experience"
-          />
-        </div>
-      </div>
-      <div className="col-md-6">
-        <div className="dash-input-wrapper mb-30">
-          <label htmlFor="">Industry*</label>
-          <NiceSelect
-            options={[
-              { value: "Select Industry", label: "Select Industry" },
-              { value: "Select Industry 2", label: "Select Industry 2" },
-            ]}
-            defaultCurrent={0}
-            onChange={(item) => handleIndustry(item)}
-            name="Industry"
-          />
-        </div>
-      </div>
-      <div className="col-md-6">
-        <div className="dash-input-wrapper mb-30">
-          <label htmlFor="">English Fluency</label>
-          <NiceSelect
-            options={[
-              { value: "Basic", label: "Basic" },
-              { value: "Conversational", label: "Conversational" },
-              { value: "Fluent", label: "Fluent" },
-              { value: "Native/Bilingual", label: "Native/Bilingual" },
-            ]}
-            defaultCurrent={0}
-            onChange={(item) => handleEnglishFluency(item)}
-            name="English Fluency"
-          />
-        </div>
-      </div>
-    </div>
+    
   );
 };
 
